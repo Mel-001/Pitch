@@ -2,7 +2,8 @@
 {% import 'macros.html' as macro %}
 {% import 'bootstrap/wtf.html' as wtf%}
 {%block styles%} {{ super() }}
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous"> 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+  integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 {%endblock%}
 {%block content%}
 <div class="container">
@@ -10,33 +11,31 @@
     <h2><b>Pitch</b></h2>
     {{message}}
     {% for pitch in pitches %}
-    <div class="col-md-4">
-      <div class="content">
-        <div class="card">
-          <div class="card-header">
-          </div>
-          <div class="card-body">
-            {{pitch.content}} <br>
-          </div>
-          <div class="description">
-            <b>{{pitch.add_description}}</b>
-          </div>
-          <br>
-          <div class="footer">
-            {% if current_user.is_authenticated %}
-            {{ wtf.quick_form(comment_form) }}
-            {%endif%}
-            <a href="/comments/"><button>View Comments</button></a>
-          </div>
-          <div class="buttons">
-            
-              <i class="far fa-thumbs-up"></i>
-            {{pitch.likes}}           
-              <i class="far fa-thumbs-down"></i>
-            {{pitch.dislikes}}
-          </div>
-
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
         </div>
+        <div class="card-body">
+          {{pitch.content}} <br>
+        </div>
+        <div class="description">
+          <b>{{pitch.add_description}}</b>
+        </div>
+        <br>
+        <div class="footer">
+          {% if current_user.is_authenticated %}
+          {{ wtf.quick_form(comment_form) }}
+          {%endif%}
+          <a href="/comments/"><button>View Comments</button></a>
+        </div>
+        <div class="buttons">
+
+          <i class="far fa-thumbs-up"></i>
+          {{pitch.likes}}
+          <i class="far fa-thumbs-down"></i>
+          {{pitch.dislikes}}
+        </div>
+
       </div>
     </div>
     {% endfor %}
