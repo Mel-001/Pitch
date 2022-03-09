@@ -23,3 +23,45 @@ def new_pitch():
 
     
     return render_template('pitch.html',pitch_form = pitch_form )
+
+@main.route('/', methods = ['GET','POST'])
+def index():
+    '''
+    view to load index.html
+    '''
+
+    
+    
+    
+    pitches = Pitch.query.all()
+    pitch = Pitch.query.filter_by(id=Pitch.id).first()
+    
+    name =  User.query.filter_by(id = Pitch.user_id).first()
+    comment_form = CommentForm()
+    if comment_form.validate_on_submit():
+        comment = comment_form.text.data
+        new_comment = Comment(comment = comment,user = current_user, pitch_id = pitch)
+        new_comment.save_comment()
+        
+        flash('Your comment has been submitted')
+        return redirect(url_for('.index'))
+
+    
+    
+
+    return render_template('index.html', pitches = pitches, name = name, comment_form = comment_form)
+    
+
+@main.route('/user/<user>')
+def profile(user):
+    user = User.query.filter_by(username = user).first()
+    user_joined = user.date_joined.strftime('%b %d, %Y')
+    pitches = Pitch.query.filter_by(user_id=Pitch.user_id).all()
+
+    if user is None:
+        abort(404)
+        
+
+    
+
+    return render_template("profile/profile.html", user = user, date = user_joined, pitches = pitches)
