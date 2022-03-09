@@ -8,4 +8,6 @@ class PitchForm(FlaskForm):
     category = SelectField('Type',choices=[('pickuplines'),('sales'),('product')],validators=[DataRequired()])
     submit = SubmitField('Submit')
 
-
+class CommentForm(FlaskForm):
+    text = TextAreaField('leave a comment below:',validators=[DataRequired()])
+    submit = SubmitField('comment')
