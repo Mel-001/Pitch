@@ -64,4 +64,26 @@ def profile(user):
 
     
 
-    return render_template("profile/profile.html", user = user, date = user_joined, pitches = pitches)
+    return render_template("profile/profile.html", user = user, pitches = pitches)
+
+
+
+@main.route('/comments/')
+def comments():
+    pitch = Pitch.query.filter_by(id=Pitch.id).first()
+    comments = Comment.get_comments(pitch)
+    name = User.query.filter_by(id = Comment.pitch).first()
+
+    return render_template('comments.html', comments = comments, name = name)
+
+@main.route('/category/')
+def category():
+    interview_pitches = Pitch.query.filter_by(category='pickuplines').all()
+    product_pitches = Pitch.query.filter_by(category='product').all()
+    promotion_pitches = Pitch.query.filter_by(category='sales').all()
+    
+
+
+    return render_template('category.html', interview = interview_pitches, product = product_pitches, promotion = promotion_pitches)
+
+
