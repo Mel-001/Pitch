@@ -10,7 +10,12 @@ class Config:
     SECRET_KEY = 'melonie'
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://melonie:Access@localhost/pitchapp'
 
-   
+   #email configs
+    MAIL_SERVER = 'smtp.gmail.com'
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
+    MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
 
 
 class ProdConfig(Config):

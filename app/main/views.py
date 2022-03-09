@@ -10,12 +10,12 @@ from .. import db
 def new_pitch():
     pitch_form = PitchForm()
     if pitch_form.validate_on_submit():
-        add_description = pitch_form.add_description.data
+        title = pitch_form.title.data
         pitch = pitch_form.pitch_content.data
         category = pitch_form.category.data
 
         # Updated pitch instance
-        new_pitch = Pitch(add_description=add_description,content=pitch,category=category,user=current_user,likes=0,dislikes=0)
+        new_pitch = Pitch(title=title,content=pitch,category=category,user=current_user,likes=0,dislikes=0)
 
         # Save pitch method
         new_pitch.save_pitch()
