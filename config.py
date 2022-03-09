@@ -27,7 +27,7 @@ class ProdConfig(Config):
         
     '''
     
-    SQLALCHEMY_DATABASE_URI='postgres://vqlcuyilqymmcm:ce4d8595deff53944c124d815c209f0ce19852c5e0c935337fdcc021b9dda13e@ec2-3-231-254-204.compute-1.amazonaws.com:5432/d7un6qs7pu347l'
+    SQLALCHEMY_DATABASE_URI='postgresql://vqlcuyilqymmcm:ce4d8595deff53944c124d815c209f0ce19852c5e0c935337fdcc021b9dda13e@ec2-3-231-254-204.compute-1.amazonaws.com:5432/d7un6qs7pu347l'
    
     
     
