@@ -8,7 +8,7 @@ class Config:
 
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     SECRET_KEY = 'melonie'
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://melonie:Access@localhost/pitchapp'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://melonie:Access@localhost/pitch'
 
    
 
@@ -35,7 +35,7 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://melonie:Access@localhost/pitchapp'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://melonie:Access@localhost/pitch'
   
 
     DEBUG = True
